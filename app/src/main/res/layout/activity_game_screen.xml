@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".GameScreenActivity">
 
     <TextView
@@ -22,27 +23,98 @@
         android:id="@+id/tvActivityGamePlayerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tvActivityGameTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="10dp"
         android:text="Player 1 ( O )"
         android:textSize="30sp"
-        android:layout_below="@+id/tvActivityGameTitle"
-        />
+        android:textStyle="bold" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
         android:layout_below="@+id/tvActivityGamePlayerName"
         android:layout_centerHorizontal="true"
-        android:text="Reset The Game"
-        />
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="@color/red"
+        android:drawableStart="@drawable/delete_24"
+        android:text="Reset The Game" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_alignParentBottom="true"
+        android:rowCount="3"
+        android:columnCount="3"
+        >
 
-        />
+        <ImageButton
+            android:id="@+id/imgBtn1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+
+        <ImageButton
+            android:id="@+id/imgBtn2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+
+            />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+
+        <ImageButton
+            android:id="@+id/imgBtn4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+
+        <ImageButton
+            android:id="@+id/imgBtn5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+
+        <ImageButton
+            android:id="@+id/imgBtn6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+
+        <ImageButton
+            android:id="@+id/imgBtn7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+
+        <ImageButton
+            android:id="@+id/imgBtn8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+
+        <ImageButton
+            android:id="@+id/imgBtn9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+
+
+    </GridLayout>
 
 </RelativeLayout>
