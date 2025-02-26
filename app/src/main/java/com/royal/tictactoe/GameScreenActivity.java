@@ -99,10 +99,15 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
     void resetGame(View view) {
-//        for (int i = 0; i < imgBtn.length; i++) {
-//            imgBtn[i].setBackground(null);
-//        }
-//        PlayerNumber = 1;
+        // Resetting all the values
+        for (int i = 0; i < imgBtn.length; i++) {
+            imgBtn[i].setBackgroundColor(ContextCompat.getColor(this, R.color.dark_grey)); // Set back to default background
+            imgBtnValue[i] = ""; // Reset the value
+        }
+        PlayerNumber = 1; // Reset player number
+        isWinner = false; // Reset winner flag
+        tvPlayerName.setText("Player 1 ( O )");
+        tvPlayerName.setTextColor(ContextCompat.getColor(this, R.color.black));
 
         Log.d("TAG", "resetGame() Called : ");
         Toast.makeText(this, "Game Reset", Toast.LENGTH_SHORT).show();
@@ -113,7 +118,7 @@ public class GameScreenActivity extends AppCompatActivity {
         ImageButton btnClick = findViewById(view.getId());
 
         // this condition prevents user to click on already filled box
-        if (btnClick.getBackground().toString().contains("RippleDrawable") && !isWinner) {
+        if (!btnClick.getBackground().toString().contains("VectorDrawable") && !isWinner) {
             // switching players after every click
             // PlayerNumber = (PlayerNumber == 1) ? 2 : 1;
 

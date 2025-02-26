@@ -54,7 +54,6 @@
         android:columnOrderPreserved="false"
         android:padding="10dp"
         android:rowCount="3"
-        android:useDefaultMargins="true"
 
         >
 
@@ -64,7 +63,8 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            />
+            android:layout_margin="10dp"
+            android:background="@color/dark_grey" />
 
         <ImageButton
             android:id="@+id/imgBtn2"
@@ -72,8 +72,8 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-
-            />
+            android:layout_margin="10dp"
+            android:background="@color/dark_grey" />
 
 
         <ImageButton
@@ -81,49 +81,63 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:background="@color/dark_grey" />
 
         <ImageButton
             android:id="@+id/imgBtn4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:background="@color/dark_grey" />
 
         <ImageButton
             android:id="@+id/imgBtn5"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:background="@color/dark_grey" />
 
         <ImageButton
             android:id="@+id/imgBtn6"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:background="@color/dark_grey" />
 
         <ImageButton
             android:id="@+id/imgBtn7"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:background="@color/dark_grey" />
 
         <ImageButton
             android:id="@+id/imgBtn8"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:background="@color/dark_grey" />
 
         <ImageButton
             android:id="@+id/imgBtn9"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:layout_margin="10dp"
+            android:background="@color/dark_grey" />
 
 
     </GridLayout>
