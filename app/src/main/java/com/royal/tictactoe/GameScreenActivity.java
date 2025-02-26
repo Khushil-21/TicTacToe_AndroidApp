@@ -108,7 +108,7 @@ public class GameScreenActivity extends AppCompatActivity {
         Toast.makeText(this, "Game Reset", Toast.LENGTH_SHORT).show();
     }
 
-    void play(View view , int index) {
+    void play(View view, int index) {
         imgBtnValue[index] = PlayerNumber == 1 ? "O" : "X";
         ImageButton btnClick = findViewById(view.getId());
 
@@ -116,56 +116,69 @@ public class GameScreenActivity extends AppCompatActivity {
         if (btnClick.getBackground().toString().contains("RippleDrawable") && !isWinner) {
             // switching players after every click
             // PlayerNumber = (PlayerNumber == 1) ? 2 : 1;
-            if (PlayerNumber == 1) {
-                PlayerNumber = 2;
-                tvPlayerName.setText("Player 2 ( X )");
-                tvPlayerName.setTextColor(ContextCompat.getColor(this, R.color.orange));
-                btnClick.setBackground(getDrawable(R.drawable.circle_24));
 
-            } else {
-                PlayerNumber = 1;
-                tvPlayerName.setText("Player 1 ( O )");
-                tvPlayerName.setTextColor(ContextCompat.getColor(this, R.color.black));
-                btnClick.setBackground(getDrawable(R.drawable.cross_24));
-            }
+            btnClick.setBackground(PlayerNumber == 1 ? getDrawable(R.drawable.circle_24) : getDrawable(R.drawable.cross_24));
 
             if (checkWinner()) {
                 Toast.makeText(this, "Player " + PlayerNumber + " is the Winner", Toast.LENGTH_SHORT).show();
                 isWinner = true;
+                return;
+            }
+
+            if (PlayerNumber == 1) {
+                PlayerNumber = 2;
+                tvPlayerName.setText("Player 2 ( X )");
+                tvPlayerName.setTextColor(ContextCompat.getColor(this, R.color.orange));
+            } else {
+                PlayerNumber = 1;
+                tvPlayerName.setText("Player 1 ( O )");
+                tvPlayerName.setTextColor(ContextCompat.getColor(this, R.color.black));
             }
 
 
         } else {
-            Toast.makeText(this, "Already Filled", Toast.LENGTH_SHORT).show();
+            if (isWinner) {
+                Toast.makeText(this, "Game is Already Finished", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Already Filled", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
     }
 
     Boolean checkWinner() {
 
-        Log.e("TAG", "i[0]: " + imgBtnValue[0]);
-        Log.e("TAG", "i[0]: " + imgBtnValue[1]);
-        Log.e("TAG", "i[0]: " + imgBtnValue[2]);
-
-
         for (int i = 0; i < 9; i += 3) {
 
             if (!imgBtnValue[i].isEmpty() && imgBtnValue[i].equals(imgBtnValue[i + 1]) && imgBtnValue[i].equals(imgBtnValue[i + 2])) {
+                imgBtn[i].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                imgBtn[i + 1].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                imgBtn[i + 2].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
                 return true;
             }
         }
 
         for (int i = 0; i < 3; i++) {
             if (!imgBtnValue[i].isEmpty() && imgBtnValue[i].equals(imgBtnValue[i + 3]) && imgBtnValue[i].equals(imgBtnValue[i + 6])) {
+                imgBtn[i].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                imgBtn[i + 3].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                imgBtn[i + 6].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
                 return true;
             }
         }
 
         if (!imgBtnValue[0].isEmpty() && imgBtnValue[0].equals(imgBtnValue[4]) && imgBtnValue[0].equals(imgBtnValue[8])) {
+            imgBtn[0].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+            imgBtn[4].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+            imgBtn[8].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
             return true;
         }
 
         if (!imgBtnValue[2].isEmpty() && imgBtnValue[2].equals(imgBtnValue[4]) && imgBtnValue[2].equals(imgBtnValue[6])) {
+            imgBtn[2].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+            imgBtn[4].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+            imgBtn[6].getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
             return true;
         }
 
