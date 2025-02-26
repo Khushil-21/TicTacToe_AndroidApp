@@ -4,6 +4,7 @@
     // custom app colors
     <color name="orange">#e98a15</color>
     <color name="grey">#fffffc</color>
+    <color name="dark_grey">#d6d7d7</color>
     <color name="black">#000000</color>
     <color name="red">#db0b00</color>
 

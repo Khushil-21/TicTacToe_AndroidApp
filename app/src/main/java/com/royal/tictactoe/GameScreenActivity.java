@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,7 +22,12 @@ import androidx.core.view.WindowInsetsCompat;
 public class GameScreenActivity extends AppCompatActivity {
     TextView tvPlayerName;
     ImageButton imgBtn[] = new ImageButton[9];
+    String imgBtnValue[] = new String[9];
+    AppCompatButton btnResetGame;
     Integer PlayerNumber = 1;
+
+    Boolean isWinner = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,22 +85,35 @@ public class GameScreenActivity extends AppCompatActivity {
 
         // for passing the View of the box to play()
         for (int i = 0; i < imgBtn.length; i++) {
-            imgBtn[i].setOnClickListener(this::play);
+            final int index = i;
+            imgBtnValue[i] = "";
+            imgBtn[i].setOnClickListener(view -> play(view, index));
         }
+
+        btnResetGame = findViewById(R.id.btnResetGame);
+        btnResetGame.setOnClickListener(this::resetGame);
     }
 
-    public void playByID(int i) {
+    void playByID(int i) {
         Log.e("play:", "-" + i);
     }
 
-    public void resetGame(View view) {
+    void resetGame(View view) {
+//        for (int i = 0; i < imgBtn.length; i++) {
+//            imgBtn[i].setBackground(null);
+//        }
+//        PlayerNumber = 1;
+
+        Log.d("TAG", "resetGame() Called : ");
+        Toast.makeText(this, "Game Reset", Toast.LENGTH_SHORT).show();
     }
 
-    public void play(View view) {
+    void play(View view , int index) {
+        imgBtnValue[index] = PlayerNumber == 1 ? "O" : "X";
         ImageButton btnClick = findViewById(view.getId());
 
         // this condition prevents user to click on already filled box
-        if (btnClick.getBackground().toString().contains("RippleDrawable")) {
+        if (btnClick.getBackground().toString().contains("RippleDrawable") && !isWinner) {
             // switching players after every click
             // PlayerNumber = (PlayerNumber == 1) ? 2 : 1;
             if (PlayerNumber == 1) {
@@ -109,9 +128,48 @@ public class GameScreenActivity extends AppCompatActivity {
                 tvPlayerName.setTextColor(ContextCompat.getColor(this, R.color.black));
                 btnClick.setBackground(getDrawable(R.drawable.cross_24));
             }
-        }else{
-            Toast.makeText(this,"Already Filled",Toast.LENGTH_SHORT).show();
+
+            if (checkWinner()) {
+                Toast.makeText(this, "Player " + PlayerNumber + " is the Winner", Toast.LENGTH_SHORT).show();
+                isWinner = true;
+            }
+
+
+        } else {
+            Toast.makeText(this, "Already Filled", Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    Boolean checkWinner() {
+
+        Log.e("TAG", "i[0]: " + imgBtnValue[0]);
+        Log.e("TAG", "i[0]: " + imgBtnValue[1]);
+        Log.e("TAG", "i[0]: " + imgBtnValue[2]);
+
+
+        for (int i = 0; i < 9; i += 3) {
+
+            if (!imgBtnValue[i].isEmpty() && imgBtnValue[i].equals(imgBtnValue[i + 1]) && imgBtnValue[i].equals(imgBtnValue[i + 2])) {
+                return true;
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (!imgBtnValue[i].isEmpty() && imgBtnValue[i].equals(imgBtnValue[i + 3]) && imgBtnValue[i].equals(imgBtnValue[i + 6])) {
+                return true;
+            }
+        }
+
+        if (!imgBtnValue[0].isEmpty() && imgBtnValue[0].equals(imgBtnValue[4]) && imgBtnValue[0].equals(imgBtnValue[8])) {
+            return true;
+        }
+
+        if (!imgBtnValue[2].isEmpty() && imgBtnValue[2].equals(imgBtnValue[4]) && imgBtnValue[2].equals(imgBtnValue[6])) {
+            return true;
+        }
+
+        return false;
 
     }
 }
