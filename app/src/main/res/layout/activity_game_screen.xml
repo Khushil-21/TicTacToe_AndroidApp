@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".GameScreenActivity">
 
     <TextView
@@ -19,13 +20,12 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvActivityGamePlayerName"
+        android:id="@+id/tvTicTacToePlayerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvActivityGameTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="20dp"
-        android:text="Player 1 ( O )"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -33,23 +33,29 @@
         android:id="@+id/btnResetGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvActivityGamePlayerName"
+        android:layout_below="@+id/GridBox"
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="20dp"
         android:backgroundTint="@color/red"
-        android:textColor="@color/white"
         android:drawablePadding="10dp"
-        app:drawableStartCompat="@drawable/delete_24"
         android:paddingHorizontal="30dp"
         android:paddingVertical="15dp"
-        android:text="Reset The Game" />
+        android:text="Reset The Game"
+        android:textColor="@color/white"
+        app:drawableStartCompat="@drawable/delete_24" />
 
     <GridLayout
+        android:id="@+id/GridBox"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_alignParentBottom="true"
-        android:rowCount="3"
+        android:layout_height="400dp"
+        android:layout_below="@+id/tvTicTacToePlayerName"
+        android:layout_marginVertical="50dp"
         android:columnCount="3"
+        android:columnOrderPreserved="false"
+        android:padding="10dp"
+        android:rowCount="3"
+        android:useDefaultMargins="true"
+
         >
 
         <ImageButton
@@ -57,7 +63,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            />
 
         <ImageButton
             android:id="@+id/imgBtn2"
